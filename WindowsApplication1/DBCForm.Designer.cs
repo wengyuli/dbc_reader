@@ -1,6 +1,6 @@
-﻿namespace WindowsApplication1
+﻿namespace AVLPumaReader
 {
-    partial class DBC
+    partial class DBCForm
     {
         /// <summary>
         /// Required designer variable.

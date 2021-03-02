@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace WindowsApplication1
+namespace AVLPumaReader
 {
+
+    /// <summary>
+    /// 全局信号集合
+    /// </summary>
+    public static class GlobalDBC
+    {
+        public static List<DBCMessage> ListOfDBCMessage = new List<DBCMessage>();
+    }
+
     //[StructLayout(LayoutKind.Sequential)]
     public struct DBCSignal
     {

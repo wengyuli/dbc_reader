@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace WindowsApplication1
+namespace AVLPumaReader
 {
     static class Program
     {
@@ -14,7 +14,7 @@ namespace WindowsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DBC());
+            Application.Run(new Form1());
         }
     }
 }

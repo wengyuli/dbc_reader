@@ -9,10 +9,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace WindowsApplication1
+namespace AVLPumaReader
 {
 
-    public partial class DBC : Form
+    public partial class DBCForm : Form
     {
 
         //// 处理帧发送
@@ -86,7 +86,7 @@ namespace WindowsApplication1
         public System.IO.FileInfo info;
         private List<DBCMessage> m_vMsg=new List<DBCMessage>();
 
-        public DBC()
+        public DBCForm()
         {
             InitializeComponent();
             m_hDBC = -1;
@@ -120,6 +120,7 @@ namespace WindowsApplication1
             IntPtr pt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(DBCMessage)));
             if (DBC_GetFirstMessage(m_hDBC,pt))
             {
+
                 DBCMessage msg = (DBCMessage)Marshal.PtrToStructure(pt, typeof(DBCMessage));
                 m_vMsg.Add(msg);
                 int index1= dataGridView1.Rows.Add();
@@ -142,6 +143,8 @@ namespace WindowsApplication1
                 
                 this.dataGridView1.Rows[index1].Cells[9].Value = Regex.Replace(System.Text.Encoding.Default.GetString(msg.strComment), @"\0", string.Empty);
                 this.dataGridView1.Rows[index1].Cells[7].Value = msg.nSignalCount;
+
+                
                 for (int i=0;i<msg.nSignalCount;i++)
                 {
                     int index2= dataGridView2.Rows.Add();
@@ -160,9 +163,9 @@ namespace WindowsApplication1
                     this.dataGridView2.Rows[index2].Cells[2].Value = Regex.Replace(System.Text.Encoding.Default.GetString(msg.vSignals[i].strName), @"\0", string.Empty);
                     this.dataGridView2.Rows[index2].Cells[1].Value = msg.nID;
                     this.dataGridView2.Rows[index2].Cells[0].Value = Regex.Replace(System.Text.Encoding.Default.GetString(msg.vSignals[i].strValDesc), @"\0", string.Empty);
+
                 }
-
-
+                
                 Marshal.DestroyStructure(pt, typeof(DBCMessage));//释放内存
                 pt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(DBCMessage)));
 
@@ -190,7 +193,8 @@ namespace WindowsApplication1
                     Marshal.DestroyStructure(pt, typeof(DBCMessage));
                     pt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(DBCMessage)));
                 }
-               
+
+                GlobalDBC.ListOfDBCMessage = m_vMsg;
             }
 
         }

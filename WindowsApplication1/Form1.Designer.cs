@@ -1,4 +1,4 @@
-﻿namespace WindowsApplication1
+﻿namespace AVLPumaReader
 {
     partial class Form1
     {
@@ -66,6 +66,7 @@
             this.listBox_Info = new System.Windows.Forms.ListBox();
             this.timer_rec = new System.Windows.Forms.Timer(this.components);
             this.button_Clear = new System.Windows.Forms.Button();
+            this.btn_dbc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -81,11 +82,9 @@
             this.groupBox1.Controls.Add(this.comboBox_DevIndex);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(24, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(1036, 288);
+            this.groupBox1.Size = new System.Drawing.Size(518, 150);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "设备参数";
@@ -97,20 +96,18 @@
             this.comboBox_devtype.Items.AddRange(new object[] {
             "3",
             "4"});
-            this.comboBox_devtype.Location = new System.Drawing.Point(102, 40);
-            this.comboBox_devtype.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_devtype.Location = new System.Drawing.Point(51, 21);
             this.comboBox_devtype.MaxDropDownItems = 15;
             this.comboBox_devtype.Name = "comboBox_devtype";
-            this.comboBox_devtype.Size = new System.Drawing.Size(238, 33);
+            this.comboBox_devtype.Size = new System.Drawing.Size(121, 21);
             this.comboBox_devtype.TabIndex = 5;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(20, 48);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Location = new System.Drawing.Point(10, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 25);
+            this.label14.Size = new System.Drawing.Size(34, 13);
             this.label14.TabIndex = 4;
             this.label14.Text = "类型:";
             // 
@@ -128,38 +125,33 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.textBox_AccCode);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(20, 104);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(10, 54);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox2.Size = new System.Drawing.Size(984, 146);
+            this.groupBox2.Size = new System.Drawing.Size(492, 76);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "初始化CAN参数";
             // 
             // textBox_Time1
             // 
-            this.textBox_Time1.Location = new System.Drawing.Point(436, 102);
-            this.textBox_Time1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Time1.Location = new System.Drawing.Point(218, 53);
             this.textBox_Time1.Name = "textBox_Time1";
-            this.textBox_Time1.Size = new System.Drawing.Size(52, 31);
+            this.textBox_Time1.Size = new System.Drawing.Size(28, 20);
             this.textBox_Time1.TabIndex = 1;
             // 
             // textBox_AccMask
             // 
-            this.textBox_AccMask.Location = new System.Drawing.Point(148, 96);
-            this.textBox_AccMask.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_AccMask.Location = new System.Drawing.Point(74, 50);
             this.textBox_AccMask.Name = "textBox_AccMask";
-            this.textBox_AccMask.Size = new System.Drawing.Size(136, 31);
+            this.textBox_AccMask.Size = new System.Drawing.Size(70, 20);
             this.textBox_AccMask.TabIndex = 1;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(304, 108);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(152, 56);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 25);
+            this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "定时器1:0x";
             // 
@@ -171,10 +163,9 @@
             "正常",
             "只听",
             "自测"});
-            this.comboBox_Mode.Location = new System.Drawing.Point(756, 96);
-            this.comboBox_Mode.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_Mode.Location = new System.Drawing.Point(378, 50);
             this.comboBox_Mode.Name = "comboBox_Mode";
-            this.comboBox_Mode.Size = new System.Drawing.Size(188, 33);
+            this.comboBox_Mode.Size = new System.Drawing.Size(96, 21);
             this.comboBox_Mode.TabIndex = 1;
             // 
             // comboBox_Filter
@@ -185,75 +176,67 @@
             "接收全部类型",
             "只接收标准帧",
             "只接收扩展帧"});
-            this.comboBox_Filter.Location = new System.Drawing.Point(756, 40);
-            this.comboBox_Filter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_Filter.Location = new System.Drawing.Point(378, 21);
             this.comboBox_Filter.Name = "comboBox_Filter";
-            this.comboBox_Filter.Size = new System.Drawing.Size(188, 33);
+            this.comboBox_Filter.Size = new System.Drawing.Size(96, 21);
             this.comboBox_Filter.TabIndex = 1;
             // 
             // textBox_Time0
             // 
-            this.textBox_Time0.Location = new System.Drawing.Point(436, 48);
-            this.textBox_Time0.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Time0.Location = new System.Drawing.Point(218, 25);
             this.textBox_Time0.Name = "textBox_Time0";
-            this.textBox_Time0.Size = new System.Drawing.Size(52, 31);
+            this.textBox_Time0.Size = new System.Drawing.Size(28, 20);
             this.textBox_Time0.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(680, 104);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Location = new System.Drawing.Point(340, 54);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 25);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "模式:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(632, 48);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(316, 25);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 25);
+            this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "滤波方式:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 108);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(13, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 25);
+            this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "屏蔽码:0x";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(304, 52);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(152, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 25);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "定时器0:0x";
             // 
             // textBox_AccCode
             // 
-            this.textBox_AccCode.Location = new System.Drawing.Point(148, 40);
-            this.textBox_AccCode.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_AccCode.Location = new System.Drawing.Point(74, 21);
             this.textBox_AccCode.Name = "textBox_AccCode";
-            this.textBox_AccCode.Size = new System.Drawing.Size(136, 31);
+            this.textBox_AccCode.Size = new System.Drawing.Size(70, 20);
             this.textBox_AccCode.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 52);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(13, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 25);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "验收码:0x";
             // 
@@ -264,10 +247,9 @@
             this.comboBox_CANIndex.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.comboBox_CANIndex.Location = new System.Drawing.Point(736, 48);
-            this.comboBox_CANIndex.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_CANIndex.Location = new System.Drawing.Point(368, 25);
             this.comboBox_CANIndex.Name = "comboBox_CANIndex";
-            this.comboBox_CANIndex.Size = new System.Drawing.Size(90, 33);
+            this.comboBox_CANIndex.Size = new System.Drawing.Size(47, 21);
             this.comboBox_CANIndex.TabIndex = 1;
             // 
             // comboBox_DevIndex
@@ -279,38 +261,34 @@
             "1",
             "2",
             "3"});
-            this.comboBox_DevIndex.Location = new System.Drawing.Point(476, 48);
-            this.comboBox_DevIndex.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_DevIndex.Location = new System.Drawing.Point(238, 25);
             this.comboBox_DevIndex.Name = "comboBox_DevIndex";
-            this.comboBox_DevIndex.Size = new System.Drawing.Size(78, 33);
+            this.comboBox_DevIndex.Size = new System.Drawing.Size(41, 21);
             this.comboBox_DevIndex.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(594, 56);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(297, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 25);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "第几路CAN:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(370, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(185, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 25);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "索引号:";
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(1116, 83);
-            this.buttonConnect.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.buttonConnect.Location = new System.Drawing.Point(558, 43);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(150, 48);
+            this.buttonConnect.Size = new System.Drawing.Size(75, 25);
             this.buttonConnect.TabIndex = 2;
             this.buttonConnect.Text = "连接";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -318,10 +296,9 @@
             // 
             // button_StartCAN
             // 
-            this.button_StartCAN.Location = new System.Drawing.Point(1116, 183);
-            this.button_StartCAN.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button_StartCAN.Location = new System.Drawing.Point(558, 95);
             this.button_StartCAN.Name = "button_StartCAN";
-            this.button_StartCAN.Size = new System.Drawing.Size(150, 48);
+            this.button_StartCAN.Size = new System.Drawing.Size(75, 25);
             this.button_StartCAN.TabIndex = 5;
             this.button_StartCAN.Text = "启动CAN";
             this.button_StartCAN.UseVisualStyleBackColor = true;
@@ -329,10 +306,9 @@
             // 
             // button_StopCAN
             // 
-            this.button_StopCAN.Location = new System.Drawing.Point(1116, 304);
-            this.button_StopCAN.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button_StopCAN.Location = new System.Drawing.Point(558, 158);
             this.button_StopCAN.Name = "button_StopCAN";
-            this.button_StopCAN.Size = new System.Drawing.Size(150, 48);
+            this.button_StopCAN.Size = new System.Drawing.Size(75, 25);
             this.button_StopCAN.TabIndex = 5;
             this.button_StopCAN.Text = "复位CAN";
             this.button_StopCAN.UseVisualStyleBackColor = true;
@@ -349,11 +325,9 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.textBox_ID);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(24, 325);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Location = new System.Drawing.Point(12, 169);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox3.Size = new System.Drawing.Size(1036, 169);
+            this.groupBox3.Size = new System.Drawing.Size(518, 88);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "发送数据帧";
@@ -365,10 +339,9 @@
             this.comboBox_FrameFormat.Items.AddRange(new object[] {
             "数据帧",
             "远程帧"});
-            this.comboBox_FrameFormat.Location = new System.Drawing.Point(392, 40);
-            this.comboBox_FrameFormat.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_FrameFormat.Location = new System.Drawing.Point(196, 21);
             this.comboBox_FrameFormat.Name = "comboBox_FrameFormat";
-            this.comboBox_FrameFormat.Size = new System.Drawing.Size(136, 33);
+            this.comboBox_FrameFormat.Size = new System.Drawing.Size(70, 21);
             this.comboBox_FrameFormat.TabIndex = 1;
             // 
             // comboBox_FrameType
@@ -378,18 +351,16 @@
             this.comboBox_FrameType.Items.AddRange(new object[] {
             "标准帧",
             "扩展帧"});
-            this.comboBox_FrameType.Location = new System.Drawing.Point(138, 42);
-            this.comboBox_FrameType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.comboBox_FrameType.Location = new System.Drawing.Point(69, 22);
             this.comboBox_FrameType.Name = "comboBox_FrameType";
-            this.comboBox_FrameType.Size = new System.Drawing.Size(136, 33);
+            this.comboBox_FrameType.Size = new System.Drawing.Size(70, 21);
             this.comboBox_FrameType.TabIndex = 1;
             // 
             // button_Send
             // 
-            this.button_Send.Location = new System.Drawing.Point(650, 98);
-            this.button_Send.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button_Send.Location = new System.Drawing.Point(325, 51);
             this.button_Send.Name = "button_Send";
-            this.button_Send.Size = new System.Drawing.Size(150, 48);
+            this.button_Send.Size = new System.Drawing.Size(75, 25);
             this.button_Send.TabIndex = 5;
             this.button_Send.Text = "发送";
             this.button_Send.UseVisualStyleBackColor = true;
@@ -398,67 +369,59 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(294, 48);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Location = new System.Drawing.Point(147, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 25);
+            this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 0;
             this.label11.Text = "帧格式:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 50);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Location = new System.Drawing.Point(20, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 25);
+            this.label10.Size = new System.Drawing.Size(46, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "帧类型:";
             // 
             // textBox_Data
             // 
-            this.textBox_Data.Location = new System.Drawing.Point(112, 100);
-            this.textBox_Data.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_Data.Location = new System.Drawing.Point(56, 52);
             this.textBox_Data.Name = "textBox_Data";
-            this.textBox_Data.Size = new System.Drawing.Size(498, 31);
+            this.textBox_Data.Size = new System.Drawing.Size(251, 20);
             this.textBox_Data.TabIndex = 1;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(38, 112);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label13.Location = new System.Drawing.Point(19, 58);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 25);
+            this.label13.Size = new System.Drawing.Size(34, 13);
             this.label13.TabIndex = 0;
             this.label13.Text = "数据:";
             // 
             // textBox_ID
             // 
-            this.textBox_ID.Location = new System.Drawing.Point(644, 37);
-            this.textBox_ID.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_ID.Location = new System.Drawing.Point(322, 19);
             this.textBox_ID.Name = "textBox_ID";
-            this.textBox_ID.Size = new System.Drawing.Size(136, 31);
+            this.textBox_ID.Size = new System.Drawing.Size(70, 20);
             this.textBox_ID.TabIndex = 1;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(544, 50);
-            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label12.Location = new System.Drawing.Point(272, 26);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 25);
+            this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "帧ID:0x";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.listBox_Info);
-            this.groupBox4.Location = new System.Drawing.Point(24, 506);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox4.Location = new System.Drawing.Point(12, 263);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox4.Size = new System.Drawing.Size(1060, 430);
+            this.groupBox4.Size = new System.Drawing.Size(530, 224);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "信息";
@@ -466,11 +429,9 @@
             // listBox_Info
             // 
             this.listBox_Info.FormattingEnabled = true;
-            this.listBox_Info.ItemHeight = 25;
-            this.listBox_Info.Location = new System.Drawing.Point(20, 42);
-            this.listBox_Info.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.listBox_Info.Location = new System.Drawing.Point(10, 22);
             this.listBox_Info.Name = "listBox_Info";
-            this.listBox_Info.Size = new System.Drawing.Size(1016, 354);
+            this.listBox_Info.Size = new System.Drawing.Size(510, 186);
             this.listBox_Info.TabIndex = 0;
             // 
             // timer_rec
@@ -480,20 +441,30 @@
             // 
             // button_Clear
             // 
-            this.button_Clear.Location = new System.Drawing.Point(1116, 415);
-            this.button_Clear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button_Clear.Location = new System.Drawing.Point(558, 216);
             this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(150, 48);
+            this.button_Clear.Size = new System.Drawing.Size(75, 25);
             this.button_Clear.TabIndex = 8;
             this.button_Clear.Text = "清空列表";
             this.button_Clear.UseVisualStyleBackColor = true;
             this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
             // 
+            // btn_dbc
+            // 
+            this.btn_dbc.Location = new System.Drawing.Point(558, 337);
+            this.btn_dbc.Name = "btn_dbc";
+            this.btn_dbc.Size = new System.Drawing.Size(75, 25);
+            this.btn_dbc.TabIndex = 9;
+            this.btn_dbc.Text = "DBC";
+            this.btn_dbc.UseVisualStyleBackColor = true;
+            this.btn_dbc.Click += new System.EventHandler(this.btn_dbc_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 957);
+            this.ClientSize = new System.Drawing.Size(680, 498);
+            this.Controls.Add(this.btn_dbc);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.buttonConnect);
@@ -501,7 +472,6 @@
             this.Controls.Add(this.button_StopCAN);
             this.Controls.Add(this.button_StartCAN);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "USB CAN Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -556,6 +526,7 @@
         private System.Windows.Forms.ComboBox comboBox_devtype;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button_Clear;
+        private System.Windows.Forms.Button btn_dbc;
     }
 }
 

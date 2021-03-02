@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Linq;
+using Newtonsoft.Json;
 
 /*------------兼容ZLG的数据类型---------------------------------*/
 
@@ -90,7 +92,7 @@ public struct CHGDESIPANDPORT
 }
 
 
-namespace WindowsApplication1
+namespace AVLPumaReader
 {
     public partial class Form1 : Form
     {
@@ -168,8 +170,8 @@ namespace WindowsApplication1
             comboBox_Mode.SelectedIndex = 2;                //还回测试模式
             comboBox_FrameFormat.SelectedIndex = 0;
             comboBox_FrameType.SelectedIndex = 0;
-            textBox_ID.Text = "00000123";
-            textBox_Data.Text = "00 01 02 03 04 05 06 07 ";
+            textBox_ID.Text = "00000051";
+            textBox_Data.Text = "0A 80 07 00 05 00 58 05";
 
             //
             Int32 curindex = 0;
@@ -185,9 +187,11 @@ namespace WindowsApplication1
             //comboBox_devtype.Items[3] = "VCI_USBCAN2";
             //m_arrdevtype[3]=  VCI_USBCAN2 ;
 
-             comboBox_devtype.SelectedIndex = 1;
+            comboBox_devtype.SelectedIndex = 1;
             comboBox_devtype.MaxDropDownItems = comboBox_devtype.Items.Count;
 
+            DBCForm dbc = new DBCForm();
+            dbc.Show();
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -246,9 +250,9 @@ namespace WindowsApplication1
             //ptArray[0] = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(VCI_CAN_OBJ)) * 50);
             //IntPtr pt = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(IntPtr)) * 1);
 
-            //Marshal.Copy(ptArray, 0, pt, 1);
+            //Marshal.Copy(ptArray, 0, pt, 1); 
 
-
+             
             //res = VCI_Receive(m_devtype, m_devind, m_canind, pt, 50/*50*/, 100);
             ////////////////////////////////////////////////////////
             if (res == 0xFFFFFFFF) res = 0;//当设备未初始化时，返回0xFFFFFFFF，不进行列表显示。
@@ -256,6 +260,10 @@ namespace WindowsApplication1
             for (UInt32 i = 0; i < res; i++)
             {
                 //VCI_CAN_OBJ obj = (VCI_CAN_OBJ)Marshal.PtrToStructure((IntPtr)((UInt32)pt + i * Marshal.SizeOf(typeof(VCI_CAN_OBJ))), typeof(VCI_CAN_OBJ));
+                
+                DBCMessage message = GlobalDBC.ListOfDBCMessage.Where(m => m.nID == m_recobj[i].ID).First();
+
+                
 
                 str = "接收到数据: ";
                 str += "  帧ID:0x" + System.Convert.ToString(m_recobj[i].ID, 16);
@@ -277,22 +285,33 @@ namespace WindowsApplication1
                     byte j = 0;
                     fixed (VCI_CAN_OBJ* m_recobj1 = &m_recobj[i])
                     {
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[0], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[1], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[2], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[3], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[4], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[5], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[6], 16);
-                        if (j++ < len)
-                            str += " " + System.Convert.ToString(m_recobj1->Data[7], 16);
+
+                        string binaryStr = "";
+                        for (int z = 0; z < message.nSize - 1; z++)
+                        {
+                            binaryStr =  System.Convert.ToString(m_recobj1->Data[z], 2).PadLeft(8,'0') + binaryStr;
+                        }
+
+                        string categoryName = System.Text.Encoding.Default.GetString(message.strName).TrimEnd('\0');
+                        Dictionary<string, string> dicValues = new Dictionary<string, string>();
+                        for (int it =0; it < message.nSignalCount;it++ ) {
+
+                            var item = message.vSignals[it];
+
+                            string binSingVal = binaryStr.Substring(binaryStr.Length - (int)item.nLen, (int)item.nLen);
+                            binaryStr = binaryStr.Remove(binaryStr.Length - (int)item.nLen, (int)item.nLen);
+
+                            string singName = System.Text.Encoding.Default.GetString(item.strName).TrimEnd('\0');
+
+                            string singUnit = System.Text.Encoding.Default.GetString(item.unit).TrimEnd('\0'); 
+
+                            dicValues.Add(singName, System.Convert.ToInt32(binSingVal, 2).ToString() + " " + singUnit);
+                            
+                        }
+
+                        string Contentjson = JsonConvert.SerializeObject(dicValues);
+
+                        str = Contentjson;
                     }
                      
                 }
@@ -361,5 +380,10 @@ namespace WindowsApplication1
             listBox_Info.Items.Clear();
         }
 
+        private void btn_dbc_Click(object sender, EventArgs e)
+        {
+            DBCForm dbc = new DBCForm();
+            dbc.Show();
+        }
     }
 }
